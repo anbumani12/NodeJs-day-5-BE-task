@@ -18,17 +18,13 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Server! 🌐");
 });
 
-const DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/mydatabase';
-
 mongoose
-  .connect(DB_URL, {
-    useUnifiedTopology: true,
-  })
+  .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error("MongoDB connection error:", error);
+    console.log(error);
   });
