@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3000; // Assuming a default port of 3000
+const PORT = Number(process.env.PORT);
 
 app.use(cors());
 app.use(express.json());
@@ -22,7 +22,7 @@ const DB_URL = process.env.DB_URL || "mongodb://localhost:27017";
 const DB_NAME = process.env.DB_NAME || "mydatabase";
 
 mongoose
-  .connect(`${DB_URL}/${DB_NAME}`)
+  .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
