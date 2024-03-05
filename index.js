@@ -18,6 +18,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Server! 🌐");
 });
 
+DB_URL=mongodb+srv;
+
 mongoose
   .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
   .then(() => {
