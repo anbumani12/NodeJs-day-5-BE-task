@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 
+
 dotenv.config();
 const app = express();
 const PORT = Number(process.env.PORT);
@@ -18,8 +19,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Server! 🌐");
 });
 
-DB_URL=mongodb+srv;
-
+DB_URL=mongodb;//localhost:27017
 mongoose
   .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
   .then(() => {
