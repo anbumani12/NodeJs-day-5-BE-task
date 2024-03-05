@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 const DB_URL = process.env.DB_URL || "mongodb://localhost:27017";
-const DB_NAME = process.env.DB_NAME || "mydatabase";
+const DB_NAME = process.env.DB_NAME || "password reset";
 
 mongoose
   .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
