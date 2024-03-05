@@ -18,13 +18,21 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Server! 🌐");
 });
 
-mongoose
-  .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
+// Ensure DB_URL and DB_NAME are set in your .env file
+const dbUrl = process.env.DB_URL;
+const dbName = process.env.DB_NAME;
+
+// MongoDB Connection
+mongoose.connect(`${dbUrl}/${dbName}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
+    console.log("MongoDB connected successfully");
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error("Error connecting to MongoDB:", error);
   });
