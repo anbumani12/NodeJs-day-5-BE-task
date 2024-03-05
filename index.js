@@ -23,7 +23,8 @@ const dbUrl = process.env.DB_URL;
 const dbName = process.env.DB_NAME;
 
 // MongoDB Connection
-mongoose.connect(`${dbUrl}/${dbName}`, {
+mongoose.connect(dbUrl, {
+  dbName: dbName,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
